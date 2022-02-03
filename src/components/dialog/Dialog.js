@@ -14,7 +14,7 @@ export default function Dialog() {
   } = state
 
   const isDisabled = numberIsCompleted && numberIsValid && policyIsChecked
-  const completeDialog = () => dispatch({ type: 'TO_FALSE', target: 'dialogIsCompleted' })
+  const completeDialog = () => dispatch({ type: 'TO_TRUE', target: 'dialogIsCompleted' })
 
   return (
     <>

@@ -21,7 +21,6 @@ export default function Promo() {
       <Panel />
       <button
         className={ `promo__close-btn ${ selectedKey === 13 ? 'selected' : '' }` }
-        className={ `promo__close-btn` }
         onClick={ closePromo }
       >
         &times;
