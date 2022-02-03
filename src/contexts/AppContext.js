@@ -63,7 +63,7 @@ function useNumber() {
   const [number, setNumber] = useContext(NumberContext)
 
   if (number === undefined || setNumber === undefined) {
-    throw new Error('useApp must be used within an AppProvider')
+    throw new Error('useNumber must be used within an AppProvider')
   }
 
   return [number, setNumber]

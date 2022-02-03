@@ -1,10 +1,13 @@
 import { useAppState } from '../../contexts/AppContext'
+import useHandleKeyDown from '../../hooks/useHandleKeyDown'
 import useKeyClick from '../../hooks/useKeyClick'
 import './keyboard.css'
 
 export default function Keyboard() {
   const state = useAppState()
   const handleClick = useKeyClick()
+
+  useHandleKeyDown()
 
   const keys = [
     {

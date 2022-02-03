@@ -45,6 +45,9 @@ export default function useAppReducer() {
       case 'CLOSE_PROMO': {
         return { ...state, isPlaying: true, promoIsOpened: false }
       }
+      case 'SET_KEY': {
+        return { ...state, selectedKey: action.key }
+      }
       default: {
         throw new Error(`Unhandled action type: ${ action.type }`)
       }
