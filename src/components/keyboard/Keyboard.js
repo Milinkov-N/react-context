@@ -1,8 +1,8 @@
-import usePromoContext from '../../contexts/PromoContext'
+import { useAppState } from '../../contexts/AppContext'
 import './keyboard.css'
 
 export default function Keyboard() {
-  const { handleKeyClick, selectedKey } = usePromoContext()
+  const state = useAppState()
 
   const keys = [
     {
@@ -56,11 +56,10 @@ export default function Keyboard() {
       {keys.map(key => (
         <button
           key={ key.id }
-          className={ `keyboard__key ${ key.id === 10 ? 'col-span-2' : '' } ${ selectedKey === key.id ? 'selected' : '' }` }
           id={ key.id }
-          onClick={ () => handleKeyClick(key.id, key.value) }
+          className={ `keyboard__key ${ key.id === 10 ? 'col-span-2' : '' } ${ state.selectedKey === key.id ? 'selected' : '' }` }
+          // onClick={ () => handleKeyClick(key.id, key.value) }
           onKeyUp={ e => e.target.blur() }
-          onKeyDown={ e => console.log(e.key) }
         >
           { key.value }
         </button>
