@@ -20,7 +20,7 @@ export default function Promo() {
       <img className='promo__backgorund-image' src='/slide-1.jpg' />
       <Panel />
       <button
-        className={ `promo__close-btn ${ selectedKey === 13 ? 'selected' : '' }` }
+        className={ `promo__close-btn ${ selectedKey === 14 ? 'selected' : '' }` }
         onClick={ closePromo }
       >
         &times;

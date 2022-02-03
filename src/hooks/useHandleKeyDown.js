@@ -55,15 +55,22 @@ export default function useHandleKeyDown() {
 
   function handleArrowDown() {
     switch (selectedKey) {
-      case 13:
-      case 12: {
+      case 14:
+      case 13: {
         dispatch({ type: 'SET_KEY', key: 1 })
         break;
       }
+      case 12: {
+        dispatch({ type: 'SET_KEY', key: 13 })
+        break;
+      } 
       case 11:
-      case 10:
-      case 9: {
+      case 10: {
         dispatch({ type: 'SET_KEY', key: 12 })
+        break;
+      } 
+      case 9: {
+        dispatch({ type: 'SET_KEY', key: 11 })
         break;
       } 
       case 8:
@@ -80,6 +87,10 @@ export default function useHandleKeyDown() {
   
   function handleArrowUp() {
     switch (selectedKey) {
+      case 14: {
+        dispatch({ type: 'SET_KEY', key: 13 })
+        break;
+      }
       case 13: {
         dispatch({ type: 'SET_KEY', key: 12 })
         break;
@@ -95,7 +106,7 @@ export default function useHandleKeyDown() {
       case 3:
       case 2:
       case 1: {
-        dispatch({ type: 'SET_KEY', key: 12 })
+        dispatch({ type: 'SET_KEY', key: 13 })
         break;
       }
       default: {
@@ -107,26 +118,26 @@ export default function useHandleKeyDown() {
   
   function handleArrowLeft() {
     if (selectedKey === 1){
-      dispatch({ type: 'SET_KEY', key: 13 })
-    }
-  
-    dispatch({ type: 'SET_KEY', key: selectedKey - 1 })
+      dispatch({ type: 'SET_KEY', key: 14 })
+    } else {
+      dispatch({ type: 'SET_KEY', key: selectedKey - 1 })
+    }  
   }
   
   function handleArrowRight() {
     switch (selectedKey) {
-      case 11: {
-        dispatch({ type: 'SET_KEY', key: 12 })
-        break;
-      }
-      case 12: {
-        dispatch({ type: 'SET_KEY', key: 13 })
-        break;
-      }
-      case 13: {
+      case 14: {
         dispatch({ type: 'SET_KEY', key: 1 })
         break;
       }
+      case 13: {
+        dispatch({ type: 'SET_KEY', key: 14 })
+        break;
+      }
+      // case 11: {
+      //   dispatch({ type: 'SET_KEY', key: 13 })
+      //   break;
+      // }
       default:{
         dispatch({ type: 'SET_KEY', key: selectedKey + 1 })
         break;
@@ -136,15 +147,19 @@ export default function useHandleKeyDown() {
   
   function handleEnter() {
     switch (selectedKey) {
-      case 13: {
+      case 14: {
         dispatch({ type: 'CLOSE_PROMO' })
         break;
       }
-      case 12: {
+      case 13: {
         const isDisabled = numberIsValid && numberIsCompleted && policyIsChecked
         if (!isDisabled) return
   
         dispatch({ type: 'TO_TRUE', target: 'dialogIsCompleted' })
+        break;
+      }
+      case 12: {
+        dispatch({ type: 'TOGGLE', target: 'policyIsChecked' })
         break;
       }
       case 11: {

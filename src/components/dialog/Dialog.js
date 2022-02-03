@@ -30,7 +30,7 @@ export default function Dialog() {
       <Keyboard />
       { numberIsValid ? <Checkbox /> : <Error /> }
       <button
-        className={ `dialog__btn ${ selectedKey === 12 ? 'selected' : '' }` }
+        className={ `dialog__btn ${ selectedKey === 13 ? 'selected' : '' }` }
         disabled={ !isDisabled }
         onClick={ completeDialog }
       >
@@ -48,6 +48,7 @@ function Checkbox() {
   return (
     <div className="dialog__agreement">
       <input
+        className={ `${ state.selectedKey === 12 ? 'selected' : '' }` }
         type='checkbox'
         name='checkbox'
         id='checkbox'

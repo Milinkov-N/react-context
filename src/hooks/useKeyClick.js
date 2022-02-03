@@ -1,7 +1,8 @@
-import { useNumber } from '../contexts/AppContext'
+import { useAppDispatch, useNumber } from '../contexts/AppContext'
 
 export default function useKeyClick() {
   const [,setNumber] = useNumber()
+  const dispatch = useAppDispatch()
 
   function handleClick(id, value) {
     setNumber(prevNumber => {
@@ -20,18 +21,22 @@ export default function useKeyClick() {
       }
       
       // Если нажата кнопкть 'Стереть'
-      if(id === 10) {
+      if (id === 10) {
         // Если курстор стоит на первой цифре,то  не мутируем state
         if (nextChar === 0) return prevNumber
     
         newNumber[nextChar - 1] = '_'
         return [...newNumber]
       }
+
+      if (id === 12) return prevNumber
     
       newNumber[nextChar] = value
     
       return [...newNumber]
     })
+
+    dispatch({ type: 'SET_KEY', key: parseInt(id) })
   }
 
   return handleClick
