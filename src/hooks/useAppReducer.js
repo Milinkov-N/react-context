@@ -1,3 +1,5 @@
+import { useReducer } from 'react'
+
 export default function useAppReducer() {
   const initState = {
     isPlaying: true,
@@ -55,5 +57,7 @@ export default function useAppReducer() {
     }
   }
 
-  return { appReducer, initState }
+  const [state, dispatch] = useReducer(appReducer, initState)
+
+  return [state, dispatch]
 }

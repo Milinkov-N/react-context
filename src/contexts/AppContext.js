@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer, useState } from 'react'
+import { createContext, useContext, useState, useEffect } from 'react'
 import useAppReducer from '../hooks/useAppReducer'
 
 const AppStateContext = createContext()
@@ -6,9 +6,16 @@ const AppDispatchContext = createContext()
 const NumberContext = createContext()
 
 export default function AppProvider({ children }) {
-  const { appReducer, initState } = useAppReducer()
-  const [state, dispatch] = useReducer(appReducer, initState)
+  const [state, dispatch] = useAppReducer()
   const [number, setNumber] = useState(['_', '_', '_', '_', '_', '_', '_', '_', '_', '_'])
+
+  useEffect(() => {
+    if (number[number.length - 1] !== '_') {
+      dispatch({ type: 'TO_TRUE', target: 'numberIsCompleted' })
+    } else {
+      dispatch({ type: 'TO_FALSE', target: 'numberIsCompleted' })
+    }
+  }, [number])
 
   return (
     <AppStateContext.Provider value={ state }>

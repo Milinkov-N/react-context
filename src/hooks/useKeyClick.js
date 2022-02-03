@@ -3,7 +3,7 @@ import { useNumber } from '../contexts/AppContext'
 export default function useKeyClick() {
   const [,setNumber] = useNumber()
 
-  function handleClick(id, value, dispatch) {
+  function handleClick(id, value) {
     setNumber(prevNumber => {
       const newNumber = [...prevNumber]
       const nextChar = prevNumber.findIndex(el => el === '_')
@@ -12,11 +12,9 @@ export default function useKeyClick() {
       if (nextChar === -1) {
         // Если нажата кнопкть 'Стереть', то заменяем последний символ на нижнее подчеркивание
         if(id === 10) {
-          dispatch({ type: 'TO_FALSE', target: 'numberIsCompleted' })
           newNumber.pop()
           return [...newNumber, '_']
         }
-        dispatch({ type: 'TO_TRUE', target: 'numberIsCompleted' })
 
         return prevNumber
       }
