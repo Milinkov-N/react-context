@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect } from 'react'
 import useAppReducer from '../hooks/useAppReducer'
+import validateNumber from '../utils/validateNumber'
 
 const AppStateContext = createContext()
 const AppDispatchContext = createContext()
@@ -10,11 +11,21 @@ export default function AppProvider({ children }) {
   const [number, setNumber] = useState(['_', '_', '_', '_', '_', '_', '_', '_', '_', '_'])
 
   useEffect(() => {
-    if (number[number.length - 1] !== '_') {
-      dispatch({ type: 'TO_TRUE', target: 'numberIsCompleted' })
-    } else {
-      dispatch({ type: 'TO_FALSE', target: 'numberIsCompleted' })
+    async function fetchData() {
+      if (number[number.length - 1] !== '_') {
+        const { IsValid } = await validateNumber(number)
+
+        IsValid === 'Yes'
+          ? dispatch({ type: 'TO_TRUE', target: 'numberIsValid' })
+          : dispatch({ type: 'TO_FALSE', target: 'numberIsValid' }) 
+
+          dispatch({ type: 'TO_TRUE', target: 'numberIsCompleted' })
+      } else {
+        dispatch({ type: 'TO_FALSE', target: 'numberIsCompleted' })
+      }
     }
+
+    fetchData()
   }, [number])
 
   return (
