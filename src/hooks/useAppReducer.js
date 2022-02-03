@@ -28,6 +28,14 @@ export default function useAppReducer() {
 
         return { ...newState }
       }
+      case 'OPEN_PROMO': {
+        return {
+          ...state,
+          isPlaying: false,
+          bannerIsShowing: false,
+          promoIsOpened: true
+        }
+      }
       case 'CLOSE_PROMO': {
         return { ...state, isPlaying: true, promoIsOpened: false }
       }

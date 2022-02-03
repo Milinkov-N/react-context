@@ -1,0 +1,36 @@
+.panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 380px;
+  height: 100%;
+  background: var(--clr-primary);
+  padding: 40px 24px;
+  z-index: 99;
+}
+
+.panel__wrapper {
+  width: 284px;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 13px;
+  margin: 0 auto;
+}
+
+.panel-enter {
+  left: -100%;
+}
+.panel-enter-active {
+  left: 0;
+  transition: .3s left ease-in-out;
+}
+
+.panel-exit {
+  left: 0;
+}
+.panel-exit-active {
+  left: -100%;
+  transition: .3s left ease-in-out;
+}

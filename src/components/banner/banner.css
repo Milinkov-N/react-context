@@ -1,0 +1,54 @@
+.banner {
+  position: absolute;
+  top: 220px;
+  right: 0;
+  width: 251px;
+  height: 357px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  background: var(--clr-primary);
+  padding: 30px 10px 10px;
+}
+
+.banner__title {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 18.75px;
+  text-align: center;
+}
+
+.banner__image {
+  width: 126px;
+  height: auto;
+}
+
+.banner__desc {
+  max-width: 126px;
+  font-size: 0.875rem;
+  line-height: 16px;
+  text-align: center;
+}
+
+.banner__btn {
+  width: 156px;
+  height: 52px;
+  background: #000;
+  border: none;
+  font-weight: 500;
+  font-family: var(--ff-roboto);
+  font-size: 1rem;
+  line-height: 19px;
+  color: var(--clr-primary);
+  cursor: pointer;
+}
+
+.banner-enter {
+  right: -100%;
+}
+
+.banner-enter-active {
+  right: 0;
+  transition: .3s right ease-in-out;
+}

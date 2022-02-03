@@ -1,0 +1,75 @@
+.promo__wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.promo__backgorund-image {
+  width: 100%;
+  height: auto;
+}
+
+.promo__close-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 88px;
+  height: 52px;
+  background: #fff;
+  border: 2px #000 solid;
+  font-size: 2.875rem;
+  line-height: 1;
+  z-index: 99;
+  transition: .2s color ease-in-out, .2s background ease-in-out;
+}
+
+.promo__close-btn:hover,
+.promo__close-btn.selected {
+  background: #000;
+  color: #fff;
+}
+
+.promo__qr-code {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  width: 314px;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  z-index: 99;
+}
+
+.promo__qr-code p {
+  font-weight: 500;
+  line-height: 19px;
+  text-align: right;
+  text-transform: uppercase;
+  margin-right: 10px;
+}
+
+.promo__qr-code img {
+  width: auto;
+  height: inherit;
+}
+
+.qr-code-enter {
+  right: -100%;
+}
+
+.qr-code-enter-active {
+  right: 20px;
+  transition: .3s right ease-in-out;
+}
+
+.qr-code-exit {
+  right: 20px;
+}
+
+.qr-code-exit-active {
+  right: -100%;
+  transition: .3s right ease-in-out;
+}
