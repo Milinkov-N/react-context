@@ -6,7 +6,10 @@ export default function FinalScreen() {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    setTimeout(() => dispatch({ type: 'TO_TRUE', target: 'sliderIsShowing' }), 3000)
+    setTimeout(() => {
+      dispatch({ type: 'TO_TRUE', target: 'sliderIsShowing' })
+      dispatch({ type: 'SET_KEY', key: 14 })
+    }, 3000)
   }, [])
 
   return (

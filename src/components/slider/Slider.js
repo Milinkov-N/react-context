@@ -9,9 +9,20 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 
+import { useKeyDown } from 'react-keyboard-input-hook'
+import { useAppDispatch } from '../../contexts/AppContext'
+
 SwiperCore.use([Keyboard,Pagination,Navigation])
 
 export default function Slider() {
+  const dispatch = useAppDispatch()
+
+  useKeyDown(({ keyName }) => {
+    if (keyName === 'Enter') {
+      dispatch({ type: 'CLOSE_PROMO' })
+    }
+  })
+
   return (
     <>
       <Swiper
