@@ -5,7 +5,6 @@ export default function useAppReducer() {
     promoIsOpened: false,
     dialogIsCompleted: false,
     sliderIsShowing: false,
-    number: ['_', '_', '_', '_', '_', '_', '_', '_', '_', '_'],
     numberIsCompleted: false,
     numberIsValid: true,
     policyIsChecked: false,

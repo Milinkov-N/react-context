@@ -1,8 +1,10 @@
-import { useAppState } from '../../contexts/AppContext'
+import { useApp } from '../../contexts/AppContext'
+import useKeyClick from '../../hooks/useKeyClick'
 import './keyboard.css'
 
 export default function Keyboard() {
-  const state = useAppState()
+  const [state, dispatch] = useApp()
+  const handleClick = useKeyClick()
 
   const keys = [
     {
@@ -58,7 +60,7 @@ export default function Keyboard() {
           key={ key.id }
           id={ key.id }
           className={ `keyboard__key ${ key.id === 10 ? 'col-span-2' : '' } ${ state.selectedKey === key.id ? 'selected' : '' }` }
-          // onClick={ () => handleKeyClick(key.id, key.value) }
+          onClick={ () => handleClick(key.id, key.value, dispatch) }
           onKeyUp={ e => e.target.blur() }
         >
           { key.value }

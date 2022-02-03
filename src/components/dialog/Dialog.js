@@ -1,12 +1,12 @@
-import { useApp } from '../../contexts/AppContext'
+import { useApp, useNumber } from '../../contexts/AppContext'
 import { Keyboard } from '..'
 import './dialog.css'
 
 export default function Dialog() {
   const [state, dispatch] = useApp()
+  const [n] = useNumber()
 
   const {
-    number: n,
     numberIsCompleted,
     numberIsValid,
     policyIsChecked,

@@ -1,17 +1,21 @@
-import { createContext, useContext, useReducer } from 'react'
+import { createContext, useContext, useReducer, useState } from 'react'
 import useAppReducer from '../hooks/useAppReducer'
 
 const AppStateContext = createContext()
 const AppDispatchContext = createContext()
+const NumberContext = createContext()
 
 export default function AppProvider({ children }) {
   const { appReducer, initState } = useAppReducer()
   const [state, dispatch] = useReducer(appReducer, initState)
+  const [number, setNumber] = useState(['_', '_', '_', '_', '_', '_', '_', '_', '_', '_'])
 
   return (
     <AppStateContext.Provider value={ state }>
       <AppDispatchContext.Provider value={ dispatch }>
-        { children }
+        <NumberContext.Provider value={ [number, setNumber] }>
+          { children }
+        </NumberContext.Provider>
       </AppDispatchContext.Provider>
     </AppStateContext.Provider>
   )
@@ -48,4 +52,14 @@ function useApp() {
   return [state, dispatch]
 }
 
-export { useAppState, useAppDispatch, useApp }
+function useNumber() {
+  const [number, setNumber] = useContext(NumberContext)
+
+  if (number === undefined || setNumber === undefined) {
+    throw new Error('useApp must be used within an AppProvider')
+  }
+
+  return [number, setNumber]
+}
+
+export { useAppState, useAppDispatch, useApp, useNumber }
